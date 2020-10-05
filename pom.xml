@@ -1,79 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.glowa.maven.tools</groupId>
-	<artifactId>unit-pojotester</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+    <groupId>com.glowa.maven.tools</groupId>
+    <artifactId>unit-pojotester</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
 
-	<parent>
-		<groupId>com.glowa.maven.parent</groupId>
-		<artifactId>global-pom</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>com.glowa.maven.parent</groupId>
+        <artifactId>global-pom</artifactId>
+        <version>0.1.1-SNAPSHOT</version>
+    </parent>
 
-	<name>Unit POJO-Tester</name>
-	<description>Simplified testing of pojo's</description>
-	<url>http://www.glowa-net.com</url>
-	<inceptionYear>2020</inceptionYear>
+    <name>Unit POJO-Tester</name>
+    <description>Simplified testing of pojo's</description>
+    <url>http://www.glowa-net.com</url>
+    <inceptionYear>2020</inceptionYear>
 
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-	<scm>
-		<connection>scm:git:git://github.com/ollily/unit-pojotester.git</connection>
-		<developerConnection>scm:git:git@github.com/ollily/unit-pojotester.git</developerConnection>
-		<url>https://github.com/ollily/unit-pojotester.git</url>
-		<tag>HEAD</tag>
-	</scm>
+    <scm>
+        <connection>scm:git:git://github.com/ollily/unit-pojotester.git</connection>
+        <developerConnection>scm:git:git@github.com/ollily/unit-pojotester.git</developerConnection>
+        <url>https://github.com/ollily/unit-pojotester.git</url>
+        <tag>HEAD</tag>
+    </scm>
 
-	<issueManagement>
-		<system>GitHub Issues</system>
-		<url>https://github.com/ollily/unit-pojotester/issues</url>
-	</issueManagement>
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/ollily/unit-pojotester/issues</url>
+    </issueManagement>
 
-	<ciManagement>
-		<!-- <system></system> <url></url> -->
-	</ciManagement>
+    <ciManagement>
+        <!-- <system></system> <url></url> -->
+    </ciManagement>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.openpojo</groupId>
-				<artifactId>openpojo</artifactId>
-				<version>0.8.13</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.openpojo</groupId>
+                <artifactId>openpojo</artifactId>
+                <version>0.8.13</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.openpojo</groupId>
-			<artifactId>openpojo</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.openpojo</groupId>
+            <artifactId>openpojo</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
