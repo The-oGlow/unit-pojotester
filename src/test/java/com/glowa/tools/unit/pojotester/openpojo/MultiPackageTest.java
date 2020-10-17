@@ -1,5 +1,6 @@
 package com.glowa.tools.unit.pojotester.openpojo;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.junit.Before;
@@ -16,17 +17,17 @@ import com.openpojo.reflection.impl.PojoClassFactory;
 public class MultiPackageTest {
 
     @org.junit.Rule
-    public ErrorCollector       collector       = new ErrorCollector();
+    public ErrorCollector         collector       = new ErrorCollector();
 
     // The top level package for all classes to be tested
-    private static final String DEFAULT_PACKAGE = "com.glowa.tools.unit.sample.simple";
+    private static final String   DEFAULT_PACKAGE = "com.glowa.tools.unit.sample.simple";
 
 //    private static final List<String> DEFAULT_EXCLUDED_CLAZZES = new ArrayList<>(Arrays.asList(     //
 //    ));
 
-    private String              packageName;
-    private List<PojoClass>     pojoClasses;
-    private IPojoValidatorAdapter   validator;
+    private String                packageName;
+    private List<PojoClass>       pojoClasses;
+    private IPojoValidatorAdapter validator;
 
     public MultiPackageTest() {
         this.packageName = DEFAULT_PACKAGE;
@@ -84,7 +85,7 @@ public class MultiPackageTest {
         }
     }
 
-    protected void validate(IPojoValidatorAdapter validateCollector, List<PojoClass> clazzesToValidate) {
+    protected void validate(IPojoValidatorAdapter validateCollector, Collection<PojoClass> clazzesToValidate) {
         validateCollector.validate(clazzesToValidate);
     }
 

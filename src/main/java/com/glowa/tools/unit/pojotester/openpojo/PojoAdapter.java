@@ -1,10 +1,12 @@
 package com.glowa.tools.unit.pojotester.openpojo;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.glowa.tools.unit.pojotester.IPojoValidatorAdapter;
 import com.glowa.tools.unit.pojotester.ValidatorMode;
 import com.openpojo.reflection.PojoClass;
+import com.openpojo.reflection.impl.PojoClassFactory;
 import com.openpojo.validation.Validator;
 import com.openpojo.validation.ValidatorBuilder;
 import com.openpojo.validation.rule.Rule;
@@ -24,14 +26,20 @@ public class PojoAdapter implements IPojoValidatorAdapter {
     }
 
     @Override
-    public void validate(Object clazzToValidate) {
-        getValidator().validate((PojoClass) clazzToValidate);
+    public void validate(Class<?> clazzToValidate) {
+        getValidator().validate(preparePojoClass(clazzToValidate));
     }
 
-    @SuppressWarnings("unchecked")
     @Override
-    public void validate(List<? extends Object> clazzesToValidate) {
-        getValidator().validate((List<PojoClass>) clazzesToValidate);
+    public void validate(Collection<?> clazzesToValidate) {
+        for (Object clazzToValidate : clazzesToValidate) {
+            validate((Class<?>) clazzToValidate);
+        }
+    }
+
+    @Override
+    public void validate(String packageNameToValidate) {
+        getValidator().validate(preparePojoClasses(packageNameToValidate));
     }
 
     protected Tester[] prepareTestersAdditional() {
@@ -46,11 +54,21 @@ public class PojoAdapter implements IPojoValidatorAdapter {
         return validator;
     }
 
+    @Override
     public ValidatorMode getValidatorMode() {
         return validatorMode;
+    }
+
+    protected PojoClass preparePojoClass(Class<?> clazz) {
+        return PojoClassFactory.getPojoClass(clazz);
+    }
+
+    protected List<PojoClass> preparePojoClasses(String packageName) {
+        return PojoClassFactory.getPojoClasses(packageName);
     }
 
     protected Validator prepareValidator(Rule[] rules, Tester[] tester) {
         return ValidatorBuilder.create().with(rules).with(tester).build();
     }
+
 }

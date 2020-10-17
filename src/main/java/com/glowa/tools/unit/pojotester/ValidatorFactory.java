@@ -13,7 +13,7 @@ public class ValidatorFactory implements IPojoTesterCommon {
 
     @Override
     public ValidatorMode getValidatorMode() {
-        return null;
+        return ValidatorMode.DEFAULT;
     }
 
     public IPojoValidator createValidator(ValidatorMode validatorMode) {

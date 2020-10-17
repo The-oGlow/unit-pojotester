@@ -1,5 +1,8 @@
 package com.glowa.tools.unit.pojotester;
 
+import java.util.Collection;
+
+import org.junit.Rule;
 import org.junit.rules.ErrorCollector;
 
 import com.glowa.tools.unit.pojotester.openpojo.ClassFilterAdapter;
@@ -8,7 +11,7 @@ import com.glowa.tools.unit.pojotester.openpojo.PojoAdapterFactory;
 
 public class PojoValidator implements IPojoValidator {
 
-    @org.junit.Rule
+    @Rule
     public ErrorCollector         collector = new ErrorCollector();
 
     private final ValidatorMode   validatorMode;
@@ -27,7 +30,7 @@ public class PojoValidator implements IPojoValidator {
 
     @Override
     public void validate(Class<?> clazz) {
-        validate(clazz);
+        validateClazz(clazz);
     }
 
     @Override
@@ -51,6 +54,10 @@ public class PojoValidator implements IPojoValidator {
 
     protected void validateClazz(Class<?> clazz) {
         validatorAdapter.validate(clazz);
+    }
+
+    protected void validateClazzes(Collection<Class<?>> clazzes) {
+        validatorAdapter.validate(clazzes);
     }
 
     protected void validatePackage(String packageName) {
