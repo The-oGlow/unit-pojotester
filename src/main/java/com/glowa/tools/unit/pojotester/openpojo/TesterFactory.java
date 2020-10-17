@@ -1,16 +1,14 @@
 package com.glowa.tools.unit.pojotester.openpojo;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import com.glowa.tools.unit.pojotester.IValidatorConfigFactory;
-import com.glowa.tools.unit.pojotester.ValidatorMode;
+import com.glowa.tools.unit.pojotester.AbstractValidatorConfigFactory;
 import com.openpojo.validation.test.Tester;
+import com.openpojo.validation.test.impl.DefaultValuesNullTester;
 import com.openpojo.validation.test.impl.GetterTester;
+import com.openpojo.validation.test.impl.SerializableTester;
 import com.openpojo.validation.test.impl.SetterTester;
+import com.openpojo.validation.test.impl.ToStringContentTester;
 
-public class TesterFactory implements IValidatorConfigFactory {
+public class TesterFactory extends AbstractValidatorConfigFactory<Tester> {
 
     private static final TesterFactory INSTANCE = new TesterFactory();
 
@@ -22,46 +20,48 @@ public class TesterFactory implements IValidatorConfigFactory {
     }
 
     @Override
-    public ValidatorMode getValidatorMode() {
-        return null;
+    protected Tester[] defineConfigDefault() {
+        return defineConfigNormal();
     }
 
     @Override
-    public Object[] createConfig(ValidatorMode validatorMode) {
-        List<Tester> rules = new ArrayList<>();
-
-        switch (validatorMode) {
-        case NORMAL:
-            rules.addAll(prepareTesterGS());
-            rules.addAll(prepareTesterSerializable());
-            break;
-        case COMPLEX:
-            rules.addAll(prepareTesterGS());
-            rules.addAll(prepareTesterSerializable());
-            rules.addAll(prepareTesterComplex());
-            break;
-        default:
-            rules.addAll(prepareTesterGS());
-            break;
-        }
-        return rules.toArray(new Tester[] {});
+    protected Tester[] defineConfigEasy() {
+        Tester[] config = add2Config(null, prepareTesterGS());
+        return config;
     }
 
-    protected List<Tester> prepareTesterGS() {
-        return new ArrayList<>(Arrays.asList(new Tester[] { //
+    @Override
+    protected Tester[] defineConfigNormal() {
+        Tester[] config = add2Config(null, prepareTesterGS());
+        config = add2Config(config, prepareTesterSerializable());
+        return config;
+    }
+
+    @Override
+    protected Tester[] defineConfigComplex() {
+        Tester[] config = add2Config(null, prepareTesterGS());
+        config = add2Config(config, prepareTesterSerializable());
+        config = add2Config(config, prepareTesterComplex());
+        return config;
+    }
+
+    protected Tester[] prepareTesterGS() {
+        return new Tester[] { //
                 new SetterTester(), //
                 new GetterTester() //
-        }));
+        };
     }
 
-    protected List<Tester> prepareTesterSerializable() {
-        return new ArrayList<>(Arrays.asList(new Tester[] { //
-        }));
+    protected Tester[] prepareTesterSerializable() {
+        return new Tester[] { //
+                new SerializableTester(), //
+                new ToStringContentTester() //
+        };
     }
 
-    protected List<Tester> prepareTesterComplex() {
-        return new ArrayList<>(Arrays.asList(new Tester[] { //
-        }));
+    protected Tester[] prepareTesterComplex() {
+        return new Tester[] { //
+                new DefaultValuesNullTester() //
+        };
     }
-
 }

@@ -1,10 +1,13 @@
 package com.glowa.tools.unit.pojotester;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface IPojoValidatorAdapter extends IPojoTesterCommon {
 
-    void validate(List<? extends Object> clazzesToValidate);
+    // FIXME: Think about this method again
+    void validate(String packageNameToValidate);
 
-    void validate(Object clazzToValidate);
+    void validate(Collection<?> clazzesToValidate);
+
+    void validate(Class<?> clazzToValidate);
 }

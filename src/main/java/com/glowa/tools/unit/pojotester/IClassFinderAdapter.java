@@ -1,10 +1,10 @@
 package com.glowa.tools.unit.pojotester;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface IClassFinderAdapter {
 
     Object retrieveClass(Class<?> clazz);
 
-    List<? extends Object> retrieveClasses(String packageName, IClassFilterAdapter clazzFilter);
+    Collection<?> retrieveClasses(String packageName, IClassFilterAdapter clazzFilter);
 }

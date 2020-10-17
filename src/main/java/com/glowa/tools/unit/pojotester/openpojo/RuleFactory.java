@@ -1,20 +1,19 @@
 package com.glowa.tools.unit.pojotester.openpojo;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import com.glowa.tools.unit.pojotester.IValidatorConfigFactory;
-import com.glowa.tools.unit.pojotester.ValidatorMode;
+import com.glowa.tools.unit.pojotester.AbstractValidatorConfigFactory;
 import com.openpojo.validation.rule.Rule;
 import com.openpojo.validation.rule.impl.EqualsAndHashCodeMatchRule;
 import com.openpojo.validation.rule.impl.GetterMustExistRule;
 import com.openpojo.validation.rule.impl.NoFieldShadowingRule;
+import com.openpojo.validation.rule.impl.NoNestedClassRule;
+import com.openpojo.validation.rule.impl.NoPrimitivesRule;
+import com.openpojo.validation.rule.impl.NoPublicFieldsExceptStaticFinalRule;
+import com.openpojo.validation.rule.impl.NoStaticExceptFinalRule;
 import com.openpojo.validation.rule.impl.SerializableMustHaveSerialVersionUIDRule;
 import com.openpojo.validation.rule.impl.SetterMustExistRule;
 import com.openpojo.validation.rule.impl.TestClassMustBeProperlyNamedRule;
 
-public class RuleFactory implements IValidatorConfigFactory {
+public class RuleFactory extends AbstractValidatorConfigFactory<Rule> {
 
     private static final RuleFactory INSTANCE = new RuleFactory();
 
@@ -26,50 +25,66 @@ public class RuleFactory implements IValidatorConfigFactory {
     }
 
     @Override
-    public Object[] createConfig(ValidatorMode validatorMode) {
-        List<Rule> rules = new ArrayList<>();
-
-        switch (validatorMode) {
-        case NORMAL:
-            rules.addAll(prepareRulesGS());
-            rules.addAll(prepareRulesSerializable());
-            break;
-        case COMPLEX:
-            rules.addAll(prepareRulesGS());
-            rules.addAll(prepareRulesSerializable());
-            rules.addAll(prepareRulesComplex());
-            break;
-        default:
-            rules.addAll(prepareRulesGS());
-            break;
-        }
-        return rules.toArray(new Rule[] {});
+    protected Rule[] defineConfigDefault() {
+        return defineConfigNormal();
     }
 
     @Override
-    public ValidatorMode getValidatorMode() {
-        return null;
+    protected Rule[] defineConfigEasy() {
+        Rule[] config = add2Config(null, prepareRulesGS());
+        return config;
     }
 
-    protected List<Rule> prepareRulesGS() {
-        return new ArrayList<>(Arrays.asList(new Rule[] { //
+    @Override
+    protected Rule[] defineConfigNormal() {
+        Rule[] config = add2Config(null, prepareRulesGS());
+        config = add2Config(config, prepareRulesSerializable());
+        config = add2Config(config, prepareRulesDeclaration());
+        return config;
+    }
+
+    @Override
+    protected Rule[] defineConfigComplex() {
+        Rule[] config = add2Config(null, prepareRulesGS());
+        config = add2Config(config, prepareRulesSerializable());
+        config = add2Config(config, prepareRulesDeclaration());
+        config = add2Config(config, prepareRulesStatic());
+        config = add2Config(config, prepareRulesExtended());
+        return config;
+    }
+
+    protected Rule[] prepareRulesGS() {
+        return new Rule[] { //
                 new SetterMustExistRule(), //
-                new GetterMustExistRule(), //
-        }));
+                new GetterMustExistRule() //
+        };
     }
 
-    protected List<Rule> prepareRulesSerializable() {
-        return new ArrayList<>(Arrays.asList(new Rule[] { //
+    protected Rule[] prepareRulesSerializable() {
+        return new Rule[] { //
                 new EqualsAndHashCodeMatchRule(), //
-                new SerializableMustHaveSerialVersionUIDRule(), //
-        }));
+                new SerializableMustHaveSerialVersionUIDRule() //
+        };
     }
 
-    protected List<Rule> prepareRulesComplex() {
-        return new ArrayList<>(Arrays.asList(new Rule[] { //
+    protected Rule[] prepareRulesDeclaration() {
+        return new Rule[] { //
                 new NoFieldShadowingRule(), //
                 new TestClassMustBeProperlyNamedRule() //
-        }));
+        };
     }
 
+    protected Rule[] prepareRulesStatic() {
+        return new Rule[] { //
+                new NoStaticExceptFinalRule(), //
+                new NoPublicFieldsExceptStaticFinalRule() //
+        };
+    }
+
+    protected Rule[] prepareRulesExtended() {
+        return new Rule[] { //
+                new NoPrimitivesRule(), //
+                new NoNestedClassRule() //
+        };
+    }
 }
