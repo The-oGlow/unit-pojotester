@@ -16,6 +16,9 @@
 [![Test Count](https://img.shields.io/sonar/tests/ollily_unit-pojotester?&logo=sonarcloud&server=https%3A%2F%2Fsonarcloud.io&style=plastic)](https://sonarcloud.io/project/dashboard?id=ollily_unit-pojotester)
 [![Coverage Status](https://img.shields.io/sonar/coverage/ollily_unit-pojotester?logo=sonarcloud&server=https%3A%2F%2Fsonarcloud.io&style=plastic)](https://sonarcloud.io/project/dashboard?id=ollily_unit-pojotester)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ollily_unit-pojotester&metric=coverage)](https://sonarcloud.io/dashboard?id=ollily_unit-pojotester)
+
+[![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/ollily/unit-pojotester?logo=libraries&style=plastic)](https://libraries.io/github/ollily/unit-pojotester)
+[![Requires.io](https://img.shields.io/requires/github/ollily/unit-pojotester?logo=requires&style=plastic)](https://requires.io/github/ollily/unit-pojotester/requirements/?branch=master)
 [![Build Status](https://img.shields.io/jenkins/build?jobUrl=ollily%2Funit-pojotester&logo=jenkins&style=plastic)](https://ci.jenkins.io/job/ollily/unit-pojotester/)
 
 
