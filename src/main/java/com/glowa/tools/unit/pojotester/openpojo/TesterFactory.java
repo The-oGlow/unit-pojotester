@@ -54,7 +54,7 @@ public class TesterFactory extends AbstractValidatorConfigFactory<Tester> {
 
     protected Tester[] prepareTesterSerializable() {
         return new Tester[] { //
-                new SerializableTester(), //
+                new SerializableTester(true), //
                 new ToStringContentTester() //
         };
     }
