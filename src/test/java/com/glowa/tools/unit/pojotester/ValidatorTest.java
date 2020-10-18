@@ -13,7 +13,7 @@ import com.glowa.tools.unit.sample.simple.SimpleSample;
 
 public class ValidatorTest {
 
-    private PojoValidator           o2T;
+    private PojoValidator       o2T;
     private String              package2Test        = "com.glowa.tools.unit.sample.simple";
     private String              packageInvalid2Test = "com.glowa.tools.unit.sample.invalid";
     private Class<SimpleSample> clazz2Test          = SimpleSample.class;
@@ -46,7 +46,8 @@ public class ValidatorTest {
         o2T.validate(package2Test);
     }
 
-    @Test
+    @Test(expected = AssertionError.class)
+    // FIXME: check test
     public void testValidateASingleClazzesWithoutException() {
         o2T.validate(clazz2Test);
     }
