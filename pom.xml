@@ -92,6 +92,12 @@
     <!-- Test -->
     <dependency>
       <groupId>com.glowanet.maven.tools</groupId>
+      <artifactId>unit-extension</artifactId>
+      <version>0.1.0-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.glowanet.maven.tools</groupId>
       <artifactId>hamcrest-extension</artifactId>
       <version>0.1.0-SNAPSHOT</version>
       <scope>test</scope>
