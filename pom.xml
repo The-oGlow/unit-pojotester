@@ -38,7 +38,7 @@
 
     <properties>
         <!-- Gitlab Properties -->
-        <project.env.CI_PROJECT_ID>?</project.env.CI_PROJECT_ID>
+        <project.env.CI_PROJECT_ID>22436269</project.env.CI_PROJECT_ID>
 
         <!-- Sonar Properties -->
         <sonar.projectKey>ollily_unit-pojotester</sonar.projectKey>
