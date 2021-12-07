@@ -4,9 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.glowa-net.maven.parent</groupId>
-        <artifactId>global-pom</artifactId>
-        <version>0.2.2</version>
+        <groupId>com.glowa_net.maven</groupId>
+        <artifactId>global-appl-pom</artifactId>
+        <version>1-SNAPSHOT</version>
+        <relativePath/>
     </parent>
 
     <groupId>com.glowa-net.maven.tools</groupId>
@@ -17,14 +18,6 @@
     <description>Simplified testing of pojo's</description>
     <url>http://www.glowa-net.com</url>
     <inceptionYear>2020</inceptionYear>
-
-    <licenses>
-        <license>
-            <name>Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
 
     <scm>
         <connection>scm:git:git://gitlab.com/ollily/unit-pojotester.git</connection>
@@ -39,10 +32,14 @@
     </issueManagement>
 
     <ciManagement>
-        <!-- <system></system> <url></url> -->
+        <system>gitlab</system>
+        <url>https://gitlab.com/ollily/unit-pojotester/-/pipelines</url>
     </ciManagement>
 
     <properties>
+        <!-- Gitlab Properties -->
+        <project.env.CI_PROJECT_ID>?</project.env.CI_PROJECT_ID>
+
         <!-- Sonar Properties -->
         <sonar.projectKey>ollily_unit-pojotester</sonar.projectKey>
     </properties>
@@ -64,7 +61,7 @@
             <dependency>
                 <groupId>com.openpojo</groupId>
                 <artifactId>openpojo</artifactId>
-                <version>0.8.13</version>
+                <version>0.9.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -118,8 +115,8 @@
     <repositories>
         <repository>
             <id>coding.read</id>
-            <name>CoDinG jFrog Group</name>
-            <url>https://coding.jfrog.io/artifactory/groups</url>
+            <name>CoDinG Group</name>
+            <url>https://gitlab.com/api/v4/groups/10107405/-/packages/maven</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
@@ -132,5 +129,23 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>coding.read</id>
+            <name>CoDinG Group</name>
+            <url>https://gitlab.com/api/v4/groups/10107405/-/packages/maven</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>

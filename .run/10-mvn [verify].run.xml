@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="mvn [sonar]" type="MavenRunConfiguration" factoryName="Maven" folderName="unit-pojotester">
+    <configuration default="false" name="10-mvn [verify]" type="MavenRunConfiguration" factoryName="Maven" folderName="unit-pojotester">
         <MavenSettings>
             <option name="myGeneralSettings"/>
             <option name="myRunnerSettings">
@@ -11,8 +11,6 @@
                     <option name="jreName" value="#USE_PROJECT_JDK"/>
                     <option name="mavenProperties">
                         <map>
-                            <entry key="SONAR_TOKEN" value="${SONAR_TOKEN_GITLAB}"/>
-                            <entry key="maven.test.failure.ignore" value="true"/>
                             <entry key="skipITs" value="false"/>
                         </map>
                     </option>
@@ -29,13 +27,16 @@
                     </option>
                     <option name="goals">
                         <list>
+                            <option value="clean"/>
                             <option value="verify"/>
-                            <option value="org.sonarsource.scanner.maven:sonar-maven-plugin:sonar"/>
                         </list>
                     </option>
                     <option name="pomFileName"/>
                     <option name="profilesMap">
-                        <map/>
+                        <map>
+                            <entry key="build-signer" value="false"/>
+                            <entry key="build-$IJ_SIGN_ALIAS$" value="false"/>
+                        </map>
                     </option>
                     <option name="resolveToWorkspace" value="true"/>
                     <option name="workingDirPath" value="$PROJECT_DIR$"/>

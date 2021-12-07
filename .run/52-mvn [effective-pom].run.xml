@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="mvn [install]" type="MavenRunConfiguration" factoryName="Maven" folderName="unit-pojotester">
+    <configuration default="false" name="52-mvn [effective-pom]" type="MavenRunConfiguration" factoryName="Maven" folderName="unit-pojotester">
         <MavenSettings>
             <option name="myGeneralSettings"/>
             <option name="myRunnerSettings">
@@ -27,13 +27,14 @@
                     </option>
                     <option name="goals">
                         <list>
-                            <option value="clean"/>
-                            <option value="install"/>
+                            <option value="help:effective-pom"/>
                         </list>
                     </option>
                     <option name="pomFileName"/>
                     <option name="profilesMap">
-                        <map/>
+                        <map>
+                            <entry key="build-$IJ_SIGN_ALIAS$" value="false"/>
+                        </map>
                     </option>
                     <option name="resolveToWorkspace" value="true"/>
                     <option name="workingDirPath" value="$PROJECT_DIR$"/>
