@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.glowa_net.maven</groupId>
+        <groupId>com.glowa-net.maven.parent</groupId>
         <artifactId>global-appl-pom</artifactId>
-        <version>1-SNAPSHOT</version>
+        <version>2-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
-    <groupId>com.glowa-net.maven.tools</groupId>
+    <groupId>com.glowa-net.maven.appl</groupId>
     <artifactId>unit-pojotester</artifactId>
     <version>0.1.1-SNAPSHOT</version>
 
