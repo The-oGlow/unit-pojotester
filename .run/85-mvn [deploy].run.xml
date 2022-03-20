@@ -34,8 +34,6 @@
                     <option name="profilesMap">
                         <map>
                             <entry key="artifact-release" value="true"/>
-                            <entry key="build-signer" value="false"/>
-                            <entry key="build-$IJ_SIGN_ALIAS$" value="false"/>
                         </map>
                     </option>
                     <option name="resolveToWorkspace" value="true"/>
