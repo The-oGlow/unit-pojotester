@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.glowa-net.maven.parent</groupId>
         <artifactId>global-appl-pom</artifactId>
-        <version>2-SNAPSHOT</version>
+        <version>3-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
@@ -14,28 +14,20 @@
     <artifactId>unit-pojotester</artifactId>
     <version>0.1.1-SNAPSHOT</version>
 
+    <!-- Section Common -->
     <name>Unit POJO-Tester</name>
     <description>Simplified testing of pojo's</description>
     <url>http://www.glowa-net.com</url>
     <inceptionYear>2020</inceptionYear>
 
     <scm>
-        <connection>scm:git:git://gitlab.com/ollily/unit-pojotester.git</connection>
-        <developerConnection>scm:git:git@gitlab.com/ollily/unit-pojotester.git</developerConnection>
-        <url>https://gitlab.com/ollily/unit-pojotester</url>
+        <connection>scm:git:https://gitlab.com/the-oglow/unit-pojotester.git</connection>
+        <developerConnection>scm:git:https://gitlab.com/the-oglow/unit-pojotester.git</developerConnection>
+        <url>${project.env.CI_PROJECT_URL}</url>
         <tag>HEAD</tag>
     </scm>
 
-    <issueManagement>
-        <system>GitLab Issues</system>
-        <url>https://gitlab.com/ollily/unit-pojotester/-/issues</url>
-    </issueManagement>
-
-    <ciManagement>
-        <system>gitlab</system>
-        <url>https://gitlab.com/ollily/unit-pojotester/-/pipelines</url>
-    </ciManagement>
-
+    <!-- Section Properties -->
     <properties>
         <!-- Gitlab Properties -->
         <project.env.CI_PROJECT_ID>22436269</project.env.CI_PROJECT_ID>
@@ -44,6 +36,7 @@
         <sonar.projectKey>ollily_unit-pojotester</sonar.projectKey>
     </properties>
 
+    <!-- Section Dependencies -->
     <dependencyManagement>
         <dependencies>
             <!-- My -->
@@ -112,6 +105,7 @@
         </dependency>
     </dependencies>
 
+    <!-- Section Repositories -->
     <repositories>
         <repository>
             <id>coding.read</id>
