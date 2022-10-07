@@ -19,7 +19,7 @@
 :proj_module: unit-pojotester
 :proj_version: [latest release]
 :proj_description: Simplified testing of pojo's.
-:proj_id_codacy: -1
+:proj_id_codacy: 59021efca3e44e9799fb0e7ca6cb0156
 :proj_id_coverity: -1
 :proj_id_openssf: -1
 
