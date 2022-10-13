@@ -19,9 +19,9 @@ public class PojoAdapter implements IPojoValidatorAdapter {
 
     public PojoAdapter(ValidatorMode validatorMode) {
         this.validatorMode = validatorMode;
-        this.validator = prepareValidator( //
-                (Rule[]) RuleFactory.getInstance().createConfig(this.validatorMode), //
-                (Tester[]) TesterFactory.getInstance().createConfig(this.validatorMode) //
+        this.validator = prepareValidator( //NOSONAR java:S1699
+                RuleFactory.getInstance().createConfig(this.validatorMode),
+                TesterFactory.getInstance().createConfig(this.validatorMode)
         );
     }
 

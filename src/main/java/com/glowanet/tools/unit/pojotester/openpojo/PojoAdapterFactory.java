@@ -8,11 +8,11 @@ public class PojoAdapterFactory implements IValidatorAdapterFactory {
 
     private static final PojoAdapterFactory INSTANCE = new PojoAdapterFactory();
 
-    public static PojoAdapterFactory getInstance() {
-        return INSTANCE;
+    private PojoAdapterFactory() {
     }
 
-    private PojoAdapterFactory() {
+    public static PojoAdapterFactory getInstance() {
+        return INSTANCE;
     }
 
     @Override

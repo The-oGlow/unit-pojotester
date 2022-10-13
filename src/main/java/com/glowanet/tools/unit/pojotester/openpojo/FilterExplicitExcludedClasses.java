@@ -10,7 +10,7 @@ class FilterExplicitExcludedClasses implements PojoClassFilter {
     private final List<String> excludedClazzes;
 
     FilterExplicitExcludedClasses(List<String> excludedClazzes) {
-        this.excludedClazzes = excludedClazzes;
+        this.excludedClazzes = List.copyOf(excludedClazzes);
     }
 
     // true includes this class, false excludes it.
