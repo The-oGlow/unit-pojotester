@@ -21,7 +21,7 @@ public class ToStringContentTester implements Tester {
     private static final String CLASS_NAME              = "class";
 
     /**
-     * Fieldnames in the class, which should be generally ignored on testing
+     * Fieldnames in the clazz, which should be generally ignored on testing
      * {@link #toString()}.
      */
     private static final Collection<String> FIELDS_COMMON_IGNORE         = new HashSet<>(List.of(CLASS_NAME, SERIAL_VERSION_UID_NAME));
