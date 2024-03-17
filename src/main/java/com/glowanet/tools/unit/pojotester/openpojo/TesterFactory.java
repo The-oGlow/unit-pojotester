@@ -12,11 +12,11 @@ public class TesterFactory extends AbstractValidatorConfigFactory<Tester> {
 
     private static final TesterFactory INSTANCE = new TesterFactory();
 
-    public static final TesterFactory getInstance() {
-        return INSTANCE;
+    private TesterFactory() {
     }
 
-    private TesterFactory() {
+    public static final TesterFactory getInstance() {
+        return INSTANCE;
     }
 
     @Override
@@ -26,8 +26,7 @@ public class TesterFactory extends AbstractValidatorConfigFactory<Tester> {
 
     @Override
     protected Tester[] defineConfigEasy() {
-        Tester[] config = add2Config(null, prepareTesterGS());
-        return config;
+        return add2Config(null, prepareTesterGS());
     }
 
     @Override

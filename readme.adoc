@@ -1,3 +1,43 @@
+:hide-uri-scheme:
+:doctype: book
+
+:site_resource: .
+// project settings (from pom-file)
+// user data
+:proj_user: ollily
+:proj_user_org: The-oGlow
+:proj_author: Oliver Glowa
+:proj_user_email: coding at glowa-net dot com
+:proj_vcs_url: https://github.com
+:proj_author_url: {proj_vcs_url}/{proj_user}[{proj_author}]
+
+// organization
+:org_user: The-oGlow
+:org_author: The oGlow
+:org_team_user: oteam
+:org_team: The oTeam
+:org_url: http://coding.glowa-net.com
+:org_email: {proj_user_email}
+:org_vcs_url: {proj_vcs_url}
+:org_author_url: {org_vcs_url}/{org_user}[{org_author}]
+:org_team_url: {org_vcs_url}/orgs/{org_user}/teams/{org_team_user}[{org_team}]
+
+// module data
+:proj_gitgroup: {org_user}
+:proj_group: com.glowa-net.maven.tools
+:proj_module: unit-pojotester
+:proj_mvn_type: jar
+:proj_version: [latest version]
+:proj_description: Simplified testing of pojo's
+:proj_year: 2020
+:proj_id_gavid: -1
+//{proj_group}/{proj_module}
+:proj_id_codacy: 59021efca3e44e9799fb0e7ca6cb0156
+:proj_id_coverity: -1
+:proj_id_openssf: -1
+//6559
+:proj_id_coveralls: -1
+//{proj_gitgroup}/{proj_module}
 // common settings - for all modules the same
 :cmmn_shields_hp: https://img.shields.io
 :cmmn_shields_badge_url: {cmmn_shields_hp}/badge
@@ -155,3 +195,100 @@ ifeval::["{proj_id_codacy}" != "-1"]
 :proj_ti_codacy_brnch1_link: {cmmn_codacy_dash_gh_url}/{proj_vcsid}/dashboard?branch={brnch_1}[image:{cmmn_codacy_badge_cov_url}/{proj_id_codacy}?branch={brnch_1}{cmmn_img_codacy_style}[title="Codacy Coverage {brnch_1}"]]
 :proj_ti_codacy_brnch2_link: {cmmn_codacy_dash_gh_url}/{proj_vcsid}/dashboard?branch={brnch_2}[image:{cmmn_codacy_badge_cov_url}/{proj_id_codacy}?branch={brnch_2}{cmmn_img_codacy_style}[title="Codacy Coverage {brnch_2}"]]
 endif::[]
+
+:source-highlighter: highlight.js
+
+= {proj_module}
+:toc: preamble
+:toclevels: 2
+
+link:{proj_ps_github_latest_link}
+link:{proj_ps_github_license_link}
+link:{proj_ps_maven_latest_link} +
+link:{proj_ps_issues_link}
+link:{proj_ps_pulls_link}
+
+{proj_description}. +
+See link:{proj_user_url}[Homepage].
+
+== Installation
+
+=== Pre-Requirements
+
+Install link:https://maven.apache.org/install.html[Maven].
+
+=== Usage
+
+To use, set in your `pom.xml`:
+
+:dep_tag: dependency
+ifeval::["{proj_mvn_type}" == "pom"]
+:dep_tag: parent
+endif::[]
+
+.pom.xml
+[source,html,subs="attributes"]
+----
+&lt;{dep_tag}&gt;
+  &lt;groupId&gt;{proj_group}&lt;/groupId&gt;
+  &lt;artifactId&gt;{proj_module}&lt;/artifactId&gt;
+  &lt;version&gt;{proj_version}&lt;/version&gt;
+&lt;/{dep_tag}&gt;
+----
+
+== Instructions
+
+The detailed instructions for this artifact are found link:readme-project.adoc[here].
+
+== Project Status
+
+[%autowidth,frame=ends,valign=top,halign=center]
+|===
+| ^|Branch '{brnch_1}' ^|Branch '{brnch_2}'
+
+3+|*Build*
+|github.com
+|link:{proj_bs_brnch1_link}
+|link:{proj_bs_brnch2_link}
+3+|*Quality Information*
+|link:{cmmn_sonar_hp}[sonarcloud.io]
+2+^|link:{proj_qi_sonar_qg_link}
+|link:{cmmn_openssf_hp}[openSSF BP]
+2+^|link:{proj_qi_openssf_status_link}
+|link:{cmmn_codacy_hp}[codacy.com]
+|link:{proj_qi_codacy_brnch1_status_link}
+|link:{proj_qi_codacy_brnch2_status_link}
+|link:{cmmn_coverity_hp}[coverity.com]
+2+^|link:{proj_qi_coverity_brnch1_status_link}
+ifeval::["{proj_mvn_type}" != "pom"]
+3+|*Test Information*
+|link:{cmmn_sonar_hp}[sonarcloud.io]
+|link:{proj_ti_sonar_brnch1_tsd_link} +
+link:{proj_ti_sonar_brnch1_test_link} +
+link:{proj_ti_sonar_brnch1_coverage_link}
+|link:{proj_ti_sonar_brnch2_tsd_link} +
+link:{proj_ti_sonar_brnch2_test_link} +
+link:{proj_ti_sonar_brnch2_coverage_link}
+|link:{cmmn_coveralls_hp}[coveralls.io]
+|link:{proj_ti_coveralls_brnch1_link}
+|link:{proj_ti_coveralls_brnch2_link}
+|link:{cmmn_codacy_hp}[codacy.com]
+|link:{proj_ti_codacy_brnch1_link}
+|link:{proj_ti_codacy_brnch2_link}
+endif::[]
+|===
+
+link:{proj_qi_sonar_status_link}
+
+== Author
+
+{proj_author_url} from {org_team_url} of {org_author_url}.
+
+== License
+
+This project is released under the link:{proj_vcsid_url}/LICENSE[Apache License Version 2.0].
+Please see the link:{proj_vcsid_url}/LICENSE[license file] for more information.
+
+''''
+
+~{proj_cright_org}~

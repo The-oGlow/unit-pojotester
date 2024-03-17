@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="10-mvn [verify]" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="51-mvn [coveralls]" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings">
@@ -11,7 +11,10 @@
           <option name="jreName" value="#USE_PROJECT_JDK" />
           <option name="mavenProperties">
             <map>
-              <entry key="skipITs" value="false" />
+              <entry key="branch" value="develop" />
+			  <entry key="fastAnalyze" value="fastAnalyze" />
+              <entry key="maven.test.failure.ignore" value="true" />
+              <entry key="repoToken" value="${CRT_unit_pojotester}" />
             </map>
           </option>
           <option name="passParentEnv" value="true" />
@@ -28,8 +31,8 @@
           </option>
           <option name="goals">
             <list>
-              <option value="clean" />
               <option value="verify" />
+              <option value="coveralls:report" />
             </list>
           </option>
           <option name="multimoduleDir" />

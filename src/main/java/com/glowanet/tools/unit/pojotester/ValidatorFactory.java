@@ -18,7 +18,6 @@ public class ValidatorFactory implements IPojoTesterCommon {
 
     public IPojoValidator createValidator(ValidatorMode validatorMode) {
 
-        IPojoValidator validator = new PojoValidator(validatorMode);
-        return validator;
+        return new PojoValidator(validatorMode);
     }
 }

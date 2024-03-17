@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThrows;
 
@@ -45,15 +47,19 @@ public class ValidatorTest {
         o2T.validate(package2Test);
     }
 
-    @Test(expected = AssertionError.class)
-    // FIXME: check test
-    public void testValidateASingleClazzesWithoutException() {
-        o2T.validate(clazz2Test);
+    @Test
+    public void testValidateASingleClazzesWithExceptionNoPrimitive() {
+        Throwable actual = assertThrows(Throwable.class, () -> o2T.validate(clazz2Test));
+        assertThat(actual, instanceOf(AssertionError.class));
+        assertThat(actual.getMessage(), containsString("Primitive fields (byte, short, int, long, float, double, boolean, char) not allowed"));
+
     }
 
     @Test
     public void testValidateASingleClazzesWithException() {
-        assertThrows(AssertionError.class, () -> o2T.validate(clazzInvalid2Test));
+        Throwable actual = assertThrows(Throwable.class, () -> o2T.validate(clazzInvalid2Test));
+        assertThat(actual, instanceOf(AssertionError.class));
+        assertThat(actual.getMessage(), containsString("is missing a getter"));
     }
 
 }

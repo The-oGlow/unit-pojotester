@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.glowa-net.maven.parent</groupId>
         <artifactId>global-appl-pom</artifactId>
-        <version>2-SNAPSHOT</version>
+        <version>4-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
@@ -14,36 +14,27 @@
     <artifactId>unit-pojotester</artifactId>
     <version>0.1.1-SNAPSHOT</version>
 
+    <!-- Section Common -->
+    <!-- ============================================== -->
     <name>Unit POJO-Tester</name>
     <description>Simplified testing of pojo's</description>
-    <url>http://www.glowa-net.com</url>
     <inceptionYear>2020</inceptionYear>
 
     <scm>
-        <connection>scm:git:git://gitlab.com/ollily/unit-pojotester.git</connection>
-        <developerConnection>scm:git:git@gitlab.com/ollily/unit-pojotester.git</developerConnection>
-        <url>https://gitlab.com/ollily/unit-pojotester</url>
+        <connection>scm:git:https://github.com/The-oGlow/unit-pojotester.git</connection>
+        <developerConnection>scm:git:https://github.com/The-oGlow/unit-pojotester.git</developerConnection>
+        <url>${project.env.GH_PROJECT_URL}</url>
         <tag>HEAD</tag>
     </scm>
 
-    <issueManagement>
-        <system>GitLab Issues</system>
-        <url>https://gitlab.com/ollily/unit-pojotester/-/issues</url>
-    </issueManagement>
-
-    <ciManagement>
-        <system>gitlab</system>
-        <url>https://gitlab.com/ollily/unit-pojotester/-/pipelines</url>
-    </ciManagement>
-
+    <!-- Section Properties -->
+    <!-- ============================================== -->
     <properties>
-        <!-- Gitlab Properties -->
-        <project.env.CI_PROJECT_ID>22436269</project.env.CI_PROJECT_ID>
-
-        <!-- Sonar Properties -->
-        <sonar.projectKey>ollily_unit-pojotester</sonar.projectKey>
+        <!-- Properties CAN be defined here! -->
     </properties>
 
+    <!-- Section Dependencies -->
+    <!-- ============================================== -->
     <dependencyManagement>
         <dependencies>
             <!-- My -->
@@ -112,40 +103,55 @@
         </dependency>
     </dependencies>
 
+    <!-- Section Repositories -->
+    <!-- ============================================== -->
     <repositories>
         <repository>
-            <id>coding.read</id>
-            <name>CoDinG Group</name>
-            <url>https://gitlab.com/api/v4/groups/10107405/-/packages/maven</url>
+            <id>coding.central</id>
+            <name>Central is the 1st in row.</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
                 <checksumPolicy>warn</checksumPolicy>
             </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>interval:30</updatePolicy>
-                <checksumPolicy>ignore</checksumPolicy>
-            </snapshots>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
-            <id>coding.read</id>
-            <name>CoDinG Group</name>
-            <url>https://gitlab.com/api/v4/groups/10107405/-/packages/maven</url>
+            <id>coding.central</id>
+            <name>Central is the 1st in row.</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <snapshots>
+                <enabled>false</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
+                <checksumPolicy>warn</checksumPolicy>
             </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
         </pluginRepository>
     </pluginRepositories>
 
+    <!-- Section Profiles -->
+    <!-- ============================================== -->
+    <profiles>
+        <profile>
+            <!--
+                Description     :   Define settings for Github
+             -->
+            <id>settings-github</id>
+            <activation>
+                <property>
+                    <name>env.GITHUB_ACTOR</name>
+                </property>
+            </activation>
+        </profile>
+    </profiles>
 </project>

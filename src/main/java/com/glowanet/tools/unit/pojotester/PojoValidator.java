@@ -41,7 +41,7 @@ public class PojoValidator implements IPojoValidator {
     public void validateAndCollect(String packageName) {
         try {
             validatePackage(packageName);
-        } catch (Throwable e) {
+        } catch (Exception e) {
             collector.addError(e);
         }
     }

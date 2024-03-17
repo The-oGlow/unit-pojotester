@@ -17,11 +17,11 @@ public class RuleFactory extends AbstractValidatorConfigFactory<Rule> {
 
     private static final RuleFactory INSTANCE = new RuleFactory();
 
-    public static final RuleFactory getInstance() {
-        return INSTANCE;
+    private RuleFactory() {
     }
 
-    private RuleFactory() {
+    public static final RuleFactory getInstance() {
+        return INSTANCE;
     }
 
     @Override
@@ -31,8 +31,7 @@ public class RuleFactory extends AbstractValidatorConfigFactory<Rule> {
 
     @Override
     protected Rule[] defineConfigEasy() {
-        Rule[] config = add2Config(null, prepareRulesGS());
-        return config;
+        return add2Config(null, prepareRulesGS());
     }
 
     @Override
